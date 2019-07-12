@@ -1,0 +1,14 @@
+﻿因无法理解.net core 异步action 中Task的作用，而引出C#异步编程思想
+
+APM、EAP和TAP
+
+APM：异步编程模型（Asynchronous Programming Model）
+EAP：基于事件的异步模式（Event-based Asynchronous Pattern）
+TAP：基于任务的异步编程模型（Task-based Asynchronous Pattern）
+
+1、Task 并不是为了让当前执行变快  目的是为了释放当前等待数据库返回的线程  而不是阻塞的方式等待   他不会减轻数据库压力  也不会缩点查询时间
+2、这个不是异步，最大的好处是高并发场景下的优势。
+3、(TAP)基于任务的异步编程模型
+4、从实际业务分析  程序最先面临压力的往往是数据库  所以往往会对数据库做集群  当数据库处理能能力大于程序处理访问的能力时  你应该考虑高效的释放访问线程   而非传统的阻塞方式
+5、不过不要钻入误区  core因为controller 和ef都提供了async  所以异步仓储是有意义的   如果你用的版本ef没有提供async方法   就别自己封装了   这样只会导致更多的消耗  而且最终其实没有做到异步
+

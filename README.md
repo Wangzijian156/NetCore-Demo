@@ -1,2 +1,2 @@
 # NetCore-Demo
-Demo Of Net core
+Demos of netcore
